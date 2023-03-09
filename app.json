@@ -1,44 +1,32 @@
+
 {
-    "name": "Telegra.ph Uploader Bot",
-    "description": "A bot that can upload medias to Telegra.ph",
-    "logo": "https://telegra.ph/file/b69c591d9667d187249c0.jpg",
-    "keywords": [
-        "Telegra.ph",
-        "Uploader",
-        "Telegram Bot",
-        "Benchamxd"
-    ],
-    "website": "https://t.me/TheAlphaBots",
-    "repository": "https://github.com/Benchamxd/Telegra.ph-Uploader/",
-    "success_url": "https://telegram.dog/ThealphaBotz",
-    "env": {
-        "TG_BOT_TOKEN": {
-            "description": "You Telegram Bot Token from @BotFather",
-            "value": ""
-        },
-        "UPDATES_CHANNEL": {
-           "description": "your channel username or I'd",
-           "Value": ""
-        },
-        "API_HASH": {
-            "description": "Your API Hash from my.telegram.org",
-            "value": ""
-        },
-        "APP_ID": {
-            "description": "Your API ID from my.telegram.org",
-            "value": ""
-        }
-    },
-    "addons": [],
-    "buildpacks": [
-        {
-            "url": "heroku/python"
-        }
-    ],
-    "formation": {
-        "worker": {
-            "quantity": 1,
-            "size": "standard-1x"
-        }
+  "name": "Telegraph Uploader Bot",
+  "description": "A Telegram bot that can upload files to Telegraph.",
+  "repository": "https://github.com/yourusername/your-repo",
+  "keywords": ["telegram", "bot", "telegraph"],
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "12"
+      }
     }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "env": {
+    "TELEGRAM_BOT_TOKEN": {
+      "description": "The Telegram bot token."
+    },
+    "TELEGRAPH_SHORT_NAME": {
+      "description": "The Telegraph short name."
+    }
+  },
+  "scripts": {
+    "start": "python bot.py"
+  }
 }
+
