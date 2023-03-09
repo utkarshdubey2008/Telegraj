@@ -16,7 +16,7 @@
             "description": "You Telegram Bot Token from @BotFather",
             "value": ""
         },
-        "UPDATES_CHANNEL":  {
+        "UPDATES_CHANNEL": {
           "description": your channel username or I'd 
           "Value": ""
         },
