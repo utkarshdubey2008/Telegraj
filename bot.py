@@ -21,7 +21,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 # Replace with your bot token
-BOT_TOKEN = "your_bot_token_here"
+BOT_TOKEN = "6218979167:AAFwntHGW5irHRgv-_sKn1KiWK3FuLxeYkM"
 
 app = Client("my_bot", bot_token=BOT_TOKEN)
 telegraph = Telegraph()
