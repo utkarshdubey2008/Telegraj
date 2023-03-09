@@ -17,8 +17,8 @@
             "value": ""
         },
         "UPDATES_CHANNEL": {
-          "description": your channel username or I'd 
-          "Value": ""
+           "description": "your channel username or I'd",
+           "Value": ""
         },
         "API_HASH": {
             "description": "Your API Hash from my.telegram.org",
