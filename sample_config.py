@@ -1,9 +1,9 @@
+
 import os
 
+# Telegram bot token
+TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN', 'your_telegram_bot_token')
 
-class Config(object):
-    TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
+# Telegraph short name
+TELEGRAPH_SHORT_NAME = os.environ.get('TELEGRAPH_SHORT_NAME', 'your_telegraph_short_name')
 
-    APP_ID = int(os.environ.get("APP_ID", 12345))
-
-    API_HASH = os.environ.get("API_HASH", "")
