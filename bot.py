@@ -13,35 +13,31 @@
 #    License can be found in < https://github.com/utkarsh212646/Telegraph_Uploader/blob/main/License> 
 
 
-import os
-import requests
-from telegraph import Telegraph
 
-from pyrogram import Client, filters
-from pyrogram.types import Message
+import telegraph
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-# Replace with your bot token
-BOT_TOKEN = "6218979167:AAFwntHGW5irHRgv-_sKn1KiWK3FuLxeYkM"
+# Set up Telegraph credentials
+telegraph_api = telegraph.api.Telegraph()
+telegraph_api.create_account(short_name='your_short_name')
 
-app = Client("my_bot", bot_token=BOT_TOKEN)
-telegraph = Telegraph()
+# Define the function to handle the /start command
+def start(update, context):
+    update.message.reply_text('Hi there! Send me a file and I will upload it to Telegraph for you.')
 
-@app.on_message(filters.photo)
-async def upload_image(bot: Client, message: Message):
-    # Download the photo to a temporary file
-    photo = message.photo[-1]
-    file_path = await bot.download_media(photo.file_id)
-    
-    # Upload the photo to Telegraph
-    with open(file_path, "rb") as f:
-        img_url = telegraph.upload(f)["src"]
-    
-    # Send the Telegraph URL to the user
-    await bot.send_message(
-        chat_id=message.chat.id,
-        text=img_url,
-        disable_web_page_preview=True
-    )
+# Define the function to handle file uploads
+def upload_file(update, context):
+    file = context.bot.getFile(update.message.document.file_id)
+    file_url = telegraph_api.upload(file=file.file_path)[0]['url']
+    update.message.reply_text(f'Your file has been uploaded to Telegraph: {file_url}')
 
-app.run()
+# Set up the Telegram bot
+updater = Updater(token='your_bot_token', use_context=True)
+dispatcher = updater.dispatcher
 
+# Add the command and message handlers
+dispatcher.add_handler(CommandHandler('start', start))
+dispatcher.add_handler(MessageHandler(Filters.document, upload_file))
+
+# Start the bot
+updater.start_polling()
