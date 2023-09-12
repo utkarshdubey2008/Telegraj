@@ -1,4 +1,10 @@
+python
 import telegraph
+import subprocess
+
+# Install python-telegram-bot package
+subprocess.call(['pip', 'install', 'python-telegram-bot'])
+
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 # Set up Telegraph credentials
