@@ -25,6 +25,3 @@ dispatcher.add_handler(MessageHandler(Filters.document, upload_file))
 
 # Start the bot
 updater.start_polling()
-```
-
-Please make sure to replace `'your_short_name'` with your desired short name for Telegraph and `'your_bot_token'` with your actual Telegram bot token.
